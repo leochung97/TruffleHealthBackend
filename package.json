@@ -1,0 +1,16 @@
+{
+  "name": "truffle-health-medical-bill-upload",
+  "version": "1.0.0",
+  "description": "Assessment for Truffle Health Backend Internship",
+  "dependencies": {
+    "express": "^4.18.2",
+    "supertest": "^6.3.3"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest index.test.js"
+  },
+  "devDependencies": {
+    "jest": "^29.4.2"
+  }
+}
