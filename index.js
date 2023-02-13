@@ -24,7 +24,7 @@ app.post("/items", (req, res) => {
     !dateOfService ||
     !billAmount
   ) {
-    return res.status(400).json({ error: "Bad Request" });
+    return res.status(400).json({ error: "Missing items on the medical bill" });
   }
 
   bills.push({
@@ -35,12 +35,12 @@ app.post("/items", (req, res) => {
     billAmount,
   });
 
-  res.status(200).json({ message: "Bill added successfully" });
+  res.status(200).json({ message: "Bill has successfully been added!" });
 });
 
 const port = 3000;
 app.listen(port, () => {
-  console.log(`Medical bill upload service is listening on port ${port}`);
+  console.log(`Medical bill upload service is up and listening on port ${port}`);
 });
 
 module.exports = app;
