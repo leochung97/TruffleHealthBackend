@@ -44,7 +44,13 @@ app.post("/items", (req, res) => {
   }
 
   // Individual tests for each field to ensure that they are valid return types
-  if (typeof patientName !== "string" || typeof patientAddress !== "string" || typeof hospitalName !== "string" || typeof dateOfService !== "string" || typeof billAmount !== "number") {
+  if (
+    typeof patientName !== "string" ||
+    typeof patientAddress !== "string" ||
+    typeof hospitalName !== "string" ||
+    typeof dateOfService !== "string" ||
+    typeof billAmount !== "number"
+  ) {
     return res.status(400).json({ error: "Invalid field type" });
   }
 
