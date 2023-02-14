@@ -10,6 +10,17 @@ app.get("/items", (req, res) => {
   res.status(200).json(bills);
 });
 
+// GET Request - Return specific bill
+app.get("/items/:id", (req, res) => {
+  const bill = bills.find((bill) => bill.id === parseInt(req.params.id));
+
+  if (!bill) {
+    return res.status(404).json({ error: "Bill not found" });
+  }
+
+  res.status(200).json(bill);
+});
+
 // POST Request - Add a new bill only if all required fields are present and fields are valid
 app.post("/items", (req, res) => {
   // Destructure the request body to get the required fields
@@ -34,27 +45,39 @@ app.post("/items", (req, res) => {
 
   // Individual tests for each field to ensure that they are valid return types
   if (typeof patientName !== "string") {
-    return res.status(400).json({ error: "Patient name must be a string" });
+    return res
+      .status(400)
+      .json({ error: "Patient name must be a valid string" });
   }
 
   if (typeof patientAddress !== "string") {
-    return res.status(400).json({ error: "Patient address must be a string" });
+    return res
+      .status(400)
+      .json({ error: "Patient address must be a valid string" });
   }
 
   if (typeof hospitalName !== "string") {
-    return res.status(400).json({ error: "Hospital name must be a string" });
+    return res
+      .status(400)
+      .json({ error: "Hospital name must be a valid string" });
   }
 
   if (!dateOfService instanceof Date) {
-    return res.status(400).json({ error: "Date of service must be a date" });
+    return res
+      .status(400)
+      .json({ error: "Date of service must be a valid date" });
   }
 
   if (typeof billAmount !== "number") {
-    return res.status(400).json({ error: "Bill amount must be a number" });
+    return res
+      .status(400)
+      .json({ error: "Bill amount must be a valid number" });
   }
 
   // If bill is valid, we can push to bills
+  const id = bills.length + 1;
   bills.push({
+    id,
     patientName,
     patientAddress,
     hospitalName,

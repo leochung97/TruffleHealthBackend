@@ -11,4 +11,5 @@ In your console:
 Requirements: [Postman](https://www.postman.com/downloads/)
 
 1. In your console, type and enter `npm start`
-2. 
+2. Start up Postman and create a new request.
+3. Under request URL: type `http://localhost:3000/items`
