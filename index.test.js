@@ -55,7 +55,21 @@ describe("Medical Bill Upload Service", () => {
       expect(res.body).toEqual({ error: "Missing items on the medical bill" });
     });
 
-    it("should return a list of bills", async () => {
+    it("should return an error if required fields are invalid types", async () => {
+      const res = await request(app).post("/items").send({
+        patientName: 123,
+        patientAddress: 123,
+        hospitalName: 123,
+        dateOfService: 123,
+        billAmount: 123,
+      });
+      expect(res.statusCode).toEqual(400);
+      expect(res.body).toEqual({
+        error: "Invalid field type",
+      });
+    });
+
+    it("should successfully add a bill", async () => {
       const bill = {
         id: 1,
         patientName: "Leo Chung",
@@ -66,8 +80,8 @@ describe("Medical Bill Upload Service", () => {
       };
 
       await request(app).post("/items").send(bill).expect(200);
-
       const response = await request(app).get("/items");
+
       expect(response.status).toBe(200);
       expect(response.body[0]).toEqual(bill);
     });

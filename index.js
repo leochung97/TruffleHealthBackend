@@ -44,34 +44,8 @@ app.post("/items", (req, res) => {
   }
 
   // Individual tests for each field to ensure that they are valid return types
-  if (typeof patientName !== "string") {
-    return res
-      .status(400)
-      .json({ error: "Patient name must be a valid string" });
-  }
-
-  if (typeof patientAddress !== "string") {
-    return res
-      .status(400)
-      .json({ error: "Patient address must be a valid string" });
-  }
-
-  if (typeof hospitalName !== "string") {
-    return res
-      .status(400)
-      .json({ error: "Hospital name must be a valid string" });
-  }
-
-  if (!dateOfService instanceof Date) {
-    return res
-      .status(400)
-      .json({ error: "Date of service must be a valid date" });
-  }
-
-  if (typeof billAmount !== "number") {
-    return res
-      .status(400)
-      .json({ error: "Bill amount must be a valid number" });
+  if (typeof patientName !== "string" || typeof patientAddress !== "string" || typeof hospitalName !== "string" || typeof dateOfService !== "string" || typeof billAmount !== "number") {
+    return res.status(400).json({ error: "Invalid field type" });
   }
 
   // If bill is valid, we can push to bills
