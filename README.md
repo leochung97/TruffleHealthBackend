@@ -24,7 +24,7 @@ To perform POST requests:
 
 1. Set the request URL to `http://localhost:3000/items/`
 2. Under Body tab: Select "raw" and input a medical bill in the following format:
-   `
+   ```
    {
       "id": 1,
       "patientName": "Leo Chung",
@@ -33,5 +33,5 @@ To perform POST requests:
       "dateOfService": "2023-01-01",
       "billAmount": 10
     }
-  `
+  ```
 3. Send the request and review the response
