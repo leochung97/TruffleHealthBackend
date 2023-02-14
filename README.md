@@ -2,6 +2,8 @@
 
 ## Walkthrough
 
+Requirements: [Node Package Manager (NPM)](https://www.npmjs.com/)
+
 In your console:
 
 - `npm start`: Begins the program and listens on port 3000
