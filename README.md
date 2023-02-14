@@ -4,8 +4,8 @@
 
 Requirements: [Node Package Manager (NPM)](https://www.npmjs.com/)
 
-In your console:
-
+In your console: 
+- `npm install`: Installs necessary node modules - this should be completed before any other step
 - `npm start`: Begins the program and listens on port 3000
 - `npm test`: Begins the test program in the console
 
